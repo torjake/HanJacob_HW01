@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
             ImpactFeedback();
         }
     }
-    private void PlayerImpact(Player player) 
+    protected virtual void PlayerImpact(Player player) 
     {
         player.DecreaseHealth(_damageAmount);
     }
