@@ -18,11 +18,16 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
-        if (player != null) 
+        TankController tankCont = collision.gameObject.GetComponent<TankController>();
+        if (player != null && player.GetComponent<Player>().canTakeDamage == true) 
         {
             PlayerImpact(player);
             ImpactFeedback();
         }
+    }
+    protected virtual void PlayerSlowed(TankController tankCont) 
+    {
+        tankCont._moveSpeed = .1f;
     }
     protected virtual void PlayerImpact(Player player) 
     {

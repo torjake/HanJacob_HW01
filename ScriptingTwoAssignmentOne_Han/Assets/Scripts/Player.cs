@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(TankController))]
 public class Player : MonoBehaviour
 {
     [SerializeField] int _maxHealth = 3;
     int _currentHealth;
+    public bool canTakeDamage = true;
+    //
+    public int _currentTreasure = 0;
+    public Text TreasureScore;
 
     TankController _tankController;
+    //
+
 
     private void Awake()
     {
@@ -20,6 +27,16 @@ public class Player : MonoBehaviour
         _currentHealth = _maxHealth;
     }
     //
+    private void Update()
+    {
+        TreasureScore.text = _currentTreasure.ToString();
+    }
+    //
+    public void IncreaseTreasure(int amount) 
+    {
+        _currentTreasure += amount;
+        print(_currentTreasure);
+    }
     public void IncreasHealth(int amount) 
     {
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
