@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         TreasureScore.text = _currentTreasure.ToString();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
     //
     public void IncreaseTreasure(int amount) 
